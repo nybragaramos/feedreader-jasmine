@@ -102,14 +102,37 @@ $(function() {
         });
 
         it('should the feed container be at leats with a single entry after been called', function() {
-          expect($('.feed .entry').length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        let defaultContent;
+        let newContent;
+
+        beforeEach(function (done) {
+
+            loadFeed(0, function () {
+                //select first default content
+                defaultContent = $('.feed .entry');
+
+                //call one more time to set the new content
+                loadFeed(1, function () {
+                    newContent = $('.feed .entry');
+                    done();
+                });
+            });
+
+        });
+
+        it('loads a new feed', function () {
+            expect(newContent).not.toBe(defaultContent);
+        });
+    });
 }());
