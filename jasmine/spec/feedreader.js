@@ -64,11 +64,24 @@ $(function() {
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+        /* TODO: Write a test that ensures the menu changes
+         * visibility when the menu icon is clicked. This test
+         * should have two expectations: does the menu display when
+         * clicked and does it hide when clicked again.
+         */
+        it('should menu handle menu-icon click', function (){
+            const menuIcon = $('.menu-icon-link');
+            //case menu is hidden the click should made be visible
+            if($('body').hasClass('menu-hidden') == true){
+                menuIcon.click();
+                expect($('body').hasClass('menu-hidden')).toBe(false);
+            }
+            //case menu is visible the click should made be hidden
+            if($('body').hasClass('menu-hidden') == false){
+                menuIcon.click();
+                expect($('body').hasClass('menu-hidden')).toBe(true);
+            }
+        });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
