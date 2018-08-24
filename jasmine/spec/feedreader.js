@@ -31,6 +31,13 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+        it('should the urls from all RSS Feeds be defined as http:// or https://', function() { 
+            allFeeds.forEach( function(feed) {       
+            expect(feed.url).toBeDefined();
+            //check if the URL contains https or http
+            expect(feed.url).toMatch(/^http(s?)\:\/\//);
+            });
+        });
 
 
         /* TODO: Write a test that loops through each feed
