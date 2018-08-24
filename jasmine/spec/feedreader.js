@@ -33,9 +33,9 @@ $(function() {
          */
         it('should the urls from all RSS Feeds be defined as http:// or https://', function() { 
             allFeeds.forEach( function(feed) {       
-            expect(feed.url).toBeDefined();
-            //check if the URL contains https or http
-            expect(feed.url).toMatch(/^http(s?)\:\/\//);
+                expect(feed.url).toBeDefined();
+                //check if the URL contains https or http
+                expect(feed.url).toMatch(/^http(s?)\:\/\//);
             });
         });
 
@@ -44,6 +44,13 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+         it('should name from RSS Feeds be defined and not empty', function() {  
+            allFeeds.forEach( function(feed) {      
+                expect(feed.name).toBeDefined();
+                expect(typeof feed.name).toBe("string");
+                expect(feed.name.length).not.toBe(0);
+            });
+        });
     });
 
 
