@@ -33,7 +33,7 @@ $(function() {
          * and that the URL is not empty.
          */
         it('should the urls from all RSS Feeds be defined as http:// or https://', function() { 
-            allFeeds.forEach( function(feed) {       
+            allFeeds.forEach(function(feed) {       
                 expect(feed.url).toBeDefined();
                 //check if the URL contains https or http
                 expect(feed.url).toMatch(/^http(s?)\:\/\//);
@@ -45,7 +45,7 @@ $(function() {
          * and that the name is not empty.
          */
          it('should name from RSS Feeds be defined and not empty', function() {  
-            allFeeds.forEach( function(feed) {      
+            allFeeds.forEach(function(feed) {      
                 expect(feed.name).toBeDefined();
                 expect(typeof feed.name).toBe("string");
                 expect(feed.name.length).not.toBe(0);
@@ -62,7 +62,7 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        it('should menu be hidden by default', function (){
+        it('should menu be hidden by default', function() {
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
@@ -71,15 +71,15 @@ $(function() {
          * should have two expectations: does the menu display when
          * clicked and does it hide when clicked again.
          */
-        it('should menu handle menu-icon click', function (){
+        it('should menu handle menu-icon click', function() {
             const menuIcon = $('.menu-icon-link');
             //case menu is hidden the click should made be visible
-            if($('body').hasClass('menu-hidden') == true){
+            if($('body').hasClass('menu-hidden') === true) {
                 menuIcon.click();
                 expect($('body').hasClass('menu-hidden')).toBe(false);
             }
             //case menu is visible the click should made be hidden
-            if($('body').hasClass('menu-hidden') == false){
+            if($('body').hasClass('menu-hidden') === false) {
                 menuIcon.click();
                 expect($('body').hasClass('menu-hidden')).toBe(true);
             }
@@ -95,8 +95,8 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        beforeEach(function (done) {
-            loadFeed(0, function (){
+        beforeEach(function(done) {
+            loadFeed(0, function () {
                 done();
             });
         });
@@ -107,7 +107,7 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-    describe('New Feed', function() {
+    describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
@@ -116,14 +116,14 @@ $(function() {
         let defaultContent;
         let newContent;
 
-        beforeEach(function (done) {
+        beforeEach(function(done) {
 
-            loadFeed(0, function () {
+            loadFeed(0, function() {
                 //select first default content
                 defaultContent = $('.feed .entry');
 
                 //call one more time to set the new content
-                loadFeed(1, function () {
+                loadFeed(1, function() {
                     newContent = $('.feed .entry');
                     done();
                 });
@@ -131,7 +131,7 @@ $(function() {
 
         });
 
-        it('loads a new feed', function () {
+        it('loads a new feed', function() {
             expect(newContent).not.toBe(defaultContent);
         });
     });

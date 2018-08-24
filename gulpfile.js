@@ -3,9 +3,8 @@ const browserSync = require('browser-sync').create();
 
 gulp.task('default', function() {
 	browserSync.init({
-    server: './'
-  });
-
-  gulp.watch('jasmine/**/*.js').on('change', browserSync.reload);
-
+		server: './'
+	});
+  	
+  	gulp.watch('jasmine/spec/feedreader.js').on('change', browserSync.reload);
 });
