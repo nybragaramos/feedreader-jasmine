@@ -9,11 +9,13 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
+
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
     describe('RSS Feeds', function() {
+
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
          * empty. Experiment with this before you get started on
@@ -85,6 +87,7 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -92,6 +95,16 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+        beforeEach(function (done) {
+            loadFeed(0, function (){
+                done();
+            });
+        });
+
+        it('should the feed container be at leats with a single entry after been called', function() {
+          expect($('.feed .entry').length).toBeGreaterThan(0);
+        });
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
